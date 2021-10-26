@@ -8,10 +8,7 @@ end
 
 class Fibonacci < Base
   def fib(n)
-    return 0 if n == 0
-    return 1 if n == 1
-
-    return fib(n-1) + fib(n-2)
+    return n < 2 ? n : fib(n-1) + fib(n-2)
   end
 end
 
@@ -23,11 +20,7 @@ class Memoized < Base
   end
 
   def fib(n)
-    return @memo[n] if @memo.has_key?(n)
-    return 0 if n == 0
-    return 1 if n == 1
-
-    return @memo[n] = fib(n-1) + fib(n-2)
+    return @memo.has_key?(n) ?  @memo[n] : n < 2 ? n : @memo[n] = fib(n-1) + fib(n-2)
   end
 end
 
