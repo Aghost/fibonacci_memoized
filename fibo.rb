@@ -16,7 +16,7 @@ class Fibonacci < Base
 end
 
 class Memoized < Base
-  attr_accessor :memo
+  attr_reader :memo
 
   def initialize
     @memo = {}
