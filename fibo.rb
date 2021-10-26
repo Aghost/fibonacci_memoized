@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 
-class Fibonacci
+class Base
+  def fib(n)
+    raise "not implemented"
+  end
+end
+
+class Fibonacci < Base
   def fib(n)
     return 0 if n == 0
     return 1 if n == 1
@@ -9,7 +15,7 @@ class Fibonacci
   end
 end
 
-class Memoized
+class Memoized < Base
   attr_accessor :memo
 
   def initialize
@@ -38,8 +44,8 @@ class FibonacciPrint
   end
 end
 
-fp = FibonacciPrint.new(16, Memoized.new)
+fp = FibonacciPrint.new(33, Fibonacci.new)
 fp.compute
 
-fp.algo = Fibonacci.new
+fp.algo = Memoized.new
 fp.compute
