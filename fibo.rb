@@ -6,7 +6,7 @@ class Base
   end
 end
 
-class FibonacciBu < Base
+class Fibonacci < Base
   def fib(n)
     f1, f2 = 0, 1
     n.times{ f1, f2 = f2, f1 + f2 }
@@ -15,13 +15,13 @@ class FibonacciBu < Base
   end
 end
 
-class Fibonacci < Base
+class FibonacciRecursive < Base
   def fib(n)
     n < 2 ? n : fib(n-1) + fib(n-2)
   end
 end
 
-class Memoized < Base
+class FibonacciMemoized < Base
   attr_reader :memo
 
   def initialize
@@ -47,11 +47,9 @@ class FibonacciPrint
   end
 end
 
-fp = FibonacciPrint.new(33, FibonacciBu.new)
+fp = FibonacciPrint.new(33, Fibonacci.new)
 fp.compute
-
-fp.algo = Fibonacci.new
+fp.algo = FibonacciMemoized.new
 fp.compute
-
-fp.algo = Memoized.new
+fp.algo = FibonacciRecursive.new
 fp.compute
